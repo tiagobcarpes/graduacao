@@ -5,29 +5,25 @@ Program alg16;
 Uses Crt;
 Var M: array[1..5,1..5] of integer;
 		A, B: array[1..5] of integer;
-		i, j, soma: integer;
+		i, j: integer;
 
 Begin
   ClrScr;
   write('Insira os números da matriz.');
   for i:=1 to 5 do
-  	Begin
-  	  soma:=0;
-  		for j:=1 to 5 do
-  			Begin
-  				gotoxy(j*3+5,i+2);
-  				readln(M[i,j]);
-  				soma:=soma+M[i,j];
-  			End;
-  		A[i]:=soma;
-  	End;
-    for i:=1 to 5 do
-  	    Begin
-  	      soma:=0;
-  		    for j:=1 to 5 do
-  		        soma:=soma+M[j,i];
-  		    B[i]:=soma;
-  	    End;
+  	for j:=1 to 5 do
+  	  Begin
+  	    gotoxy(j*3+5,i+2);
+  	    readln(M[i,j]);
+  	    if (j = 1) then
+  	      A[i]:=M[i,j]
+  	    else
+  	      A[i]:=A[i]+M[i,j];
+  	    if (i = 1) then
+  	      B[j]:=M[i,j]
+  	    else
+  	      B[j]:=B[j]+M[i,j];
+  	  End;
   ClrScr;
   write('Matriz formada:');
   for i:=1 to 5 do
